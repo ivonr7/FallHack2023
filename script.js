@@ -16,7 +16,7 @@ function appendMessage(message, isUser) {
 
 async function callAPI(url) {
     try {
-        const response = await fetch(url,{method: 'GET'});
+        const response = await fetch(url,{method= 'GET'});
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
