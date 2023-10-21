@@ -12,5 +12,5 @@ async def ask(message:str ) -> Answer:
 
 
 @app.get("/")
-async def root(id:int):
+async def root():
     return {"hello":"hello"}
