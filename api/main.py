@@ -3,7 +3,9 @@ from models import Question, Answer
 app = FastAPI()
 
 
-@app.get("/")
-async def root() -> Answer:
-    resp=Answer(answer="Hello Pydantic")
-    return {"message": Answer}
+@app.get("/ask/")
+async def ask(question:Question = Question(message="")) -> Answer:
+    
+    print(question.message)
+    resp=Answer(answer=question.message)
+    return resp
