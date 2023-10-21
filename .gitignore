@@ -1,2 +1,5 @@
 ./api/__pycache_
 *.pyc_
+api/__pycache__/main.cpython-38.pyc
+.gitignore
+api/__pycache__/models.cpython-38.pyc
