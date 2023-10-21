@@ -1,4 +1,4 @@
 # FallHack2023
 
-# Alex Mei
+Alex Mei
 Fall hackathon 2023 chatbot
