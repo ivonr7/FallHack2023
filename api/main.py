@@ -4,8 +4,13 @@ app = FastAPI()
 
 
 @app.get("/ask/")
-async def ask(question:Question = Question(message="")) -> Answer:
+async def ask(message:str ) -> Answer:
     
-    print(question.message)
-    resp=Answer(answer=question.message)
+    print(message)
+    resp=Answer(answer=message)
     return resp
+
+
+@app.get("/")
+async def root(id:int):
+    return {"hello":"hello"}
