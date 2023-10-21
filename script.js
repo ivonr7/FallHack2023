@@ -1,6 +1,7 @@
 // script.js
 const userInput = document.getElementById('user-input');
 const chatMessages = document.getElementById('chat-messages');
+const chatOutPut = document.getElementById('chat-output')
 
 function appendMessage(message, isUser) {
     const messageContainer = document.createElement('div');
@@ -9,7 +10,8 @@ function appendMessage(message, isUser) {
     messageContainer.textContent = `${userName}: ${message}`; // Include the username with the message
     chatMessages.appendChild(messageContainer);
 
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    // Automatic Scroll for newer messages
+    chatOutPut.scrollTop = chatOutPut.scrollHeight;
 }
 
 async function callAPI(url) {
