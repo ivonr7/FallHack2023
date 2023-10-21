@@ -1,16 +1,15 @@
 /* styles.css */
-html {
+html, body {
     height: 100%;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
 }
 
 #chat-container {
-    width: 700px; /* Total width of 500 (output) + 200 (input) */
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -18,12 +17,11 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    height: 500px;
 }
 
 #chat-header {
     display: flex;
-    justify-content: space-between; /* Create space between menu button and clear button */
+    justify-content: space-between;
     padding: 10px;
     background-color: #3f51b5;
     color: #fff;
@@ -55,21 +53,20 @@ body {
     background-color: #f5f5f5;
     color: #000;
     border: none;
-    padding: 5px 10px; /* Add space around the button */
+    padding: 5px 10px;
     cursor: pointer;
     font-weight: bold;
     border-radius: 4px;
 }
 
 #chat-output {
-    flex: 7; /* Output box takes 7/10 of the available vertical space */
+    width: 100%;
+    height: 70%;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 8px;
-    /*padding: 10px;*/
-    overflow:scroll;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    padding: 10px;
+    overflow-y: auto;
 }
 
 #chat-messages {
@@ -92,14 +89,14 @@ body {
 }
 
 #chat-input {
-    width: 700px; /* Width of the input section */
-    height: 200px;
+    width: 100%;
+    height: 30%;
     padding: 10px;
     display: flex;
     flex-direction: column;
     background-color: #f5f5f5;
-    /*border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;*/
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 #user-input {
@@ -111,3 +108,4 @@ body {
     display: flex;
     align-items: center;
 }
+
