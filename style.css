@@ -1,0 +1,15 @@
+/* styles.css */
+#chat-container {
+    width: 300px;
+    margin: 0 auto;
+}
+
+#chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+#user-input {
+    width: 100%;
+}
