@@ -67,7 +67,8 @@ function toggleMenu() {
 // Handle menu options
 resetButton.addEventListener('click', function () {
     // Implement your reset logic here
-    alert('Reset button clicked');
+    alert('Chat Reseted.');
+    resetChat();
 });
 
 saveButton.addEventListener('click', function () {
@@ -82,5 +83,10 @@ loadButton.addEventListener('click', function () {
 
 exitButton.addEventListener('click', function () {
     // Implement your exit logic here
-    alert('Exit button clicked');
+    menuPopup.style.display = 'none';
 });
+
+function resetChat(){
+    chatMessages.innerHTML = '';
+    userInput.value = '';
+}

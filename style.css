@@ -79,8 +79,8 @@ body {
 }
 
 #chat-input {
-    width: 200px; /* Width of the input section */
-    height: 500px;
+    width: 700px; /* Width of the input section */
+    height: 200px;
     padding: 10px;
     display: flex;
     flex-direction: column;
