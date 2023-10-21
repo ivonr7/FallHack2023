@@ -20,7 +20,7 @@ async function callAPI(url) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        const data = await response.text();
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error('Error:', error);
@@ -35,10 +35,18 @@ async function processUserInput() {
     appendMessage(userMessage, true);
 
     // Generate a random response from the bot
-    const randomResponse = await callAPI("http://127.0.0.1:8000/");
-    console.log(randomResponse);
+    const responseData = await callAPI("http://localhost:8000");
 
-    appendMessage(randomResponse, false);
+    const words = userMessage.split(" ");
+
+    for(const word of words){
+        if (responseData[word]) {
+            appendMessage(responseData[word], false); // Display the message associated with the keyword
+            return; // Exit the loop if a match is found
+        }
+    }
+
+    appendMessage("Okay", false);
 }
 
 
