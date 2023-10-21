@@ -1,22 +1,24 @@
 /* styles.css */
+html {
+    height: 100%;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Use viewport height to fill the entire screen */
 }
 
 #chat-container {
-    flex: 1; /* Fill available vertical space */
+    width: 700px; /* Total width of 500 (output) + 200 (input) */
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    height: 500px;
 }
 
 #chat-header {
@@ -64,8 +66,10 @@ body {
     background-color: #f5f5f5;
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 10px;
-    overflow-y: auto;
+    /*padding: 10px;*/
+    overflow:scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #chat-messages {
@@ -88,15 +92,14 @@ body {
 }
 
 #chat-input {
-    flex: 3; /* Input box takes 3/10 of the available vertical space */
-    width: 100%;
-    height: 30%;
+    width: 700px; /* Width of the input section */
+    height: 200px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     background-color: #f5f5f5;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    /*border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;*/
 }
 
 #user-input {
