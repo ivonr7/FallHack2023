@@ -86,8 +86,14 @@ body {
 }
 
 #chat-input {
+<<<<<<< HEAD
     width: 100%; /* Width of the input section */
     /*height: 100%;*/
+=======
+    width: 700px; /* Width of the input section */
+    height: 200px;
+    padding: 10px;
+>>>>>>> a385c3d5a62471663b10088d239e79e88a6417fe
     display: flex;
     flex-direction: column;
     background-color: #f5f5f5;

@@ -9,21 +9,20 @@ function appendMessage(message, isUser) {
     messageContainer.textContent = `${userName}: ${message}`; // Include the username with the message
     chatMessages.appendChild(messageContainer);
 }
-
+function callAPI(url){
+    var http= new XMLHttpRequest();
+    http.open("GET",url, false);
+    http.send(null);
+    return http.responseText;
+}
 function processUserInput() {
     const userMessage = userInput.value;
     appendMessage(userMessage, true);
 
     // Generate a random response from the bot
-    const randomResponses = [
-        "Hello there!",
-        "How can I assist you?",
-        "Nice to meet you!",
-        "What's on your mind?",
-        "I'm here to help.",
-    ];
-
-    const randomResponse = randomResponses[Math.floor(Math.random() * randomResponses.length)];
+    const randomResponse =callAPI("http://127.0.0.1:8000/")
+    console.log(randomResponse)
+    // const randomResponse = randomResponses[Math.floor(Math.random() * randomResponses.length)];
     appendMessage(randomResponse, false);
 
     userInput.value = '';
@@ -67,7 +66,8 @@ function toggleMenu() {
 // Handle menu options
 resetButton.addEventListener('click', function () {
     // Implement your reset logic here
-    alert('Reset button clicked');
+    alert('Chat Reseted.');
+    resetChat();
 });
 
 saveButton.addEventListener('click', function () {
@@ -82,5 +82,10 @@ loadButton.addEventListener('click', function () {
 
 exitButton.addEventListener('click', function () {
     // Implement your exit logic here
-    alert('Exit button clicked');
+    menuPopup.style.display = 'none';
 });
+
+function resetChat(){
+    chatMessages.innerHTML = '';
+    userInput.value = '';
+}
