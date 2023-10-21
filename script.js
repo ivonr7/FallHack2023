@@ -8,25 +8,37 @@ function appendMessage(message, isUser) {
     const userName = isUser ? 'You' : 'ChatBot'; // Determine the username
     messageContainer.textContent = `${userName}: ${message}`; // Include the username with the message
     chatMessages.appendChild(messageContainer);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-function callAPI(url){
-    var http= new XMLHttpRequest();
-    http.open("GET",url, false);
-    http.send(null);
-    return http.responseText;
+
+async function callAPI(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.text();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        return 'An error occurred while fetching data';
+    }
 }
-function processUserInput() {
+
+async function processUserInput() {
     const userMessage = userInput.value;
+    userInput.value = '';
+
     appendMessage(userMessage, true);
 
     // Generate a random response from the bot
-    const randomResponse =callAPI("http://127.0.0.1:8000/")
-    console.log(randomResponse)
-    // const randomResponse = randomResponses[Math.floor(Math.random() * randomResponses.length)];
-    appendMessage(randomResponse, false);
+    const randomResponse = await callAPI("http://127.0.0.1:8000/");
+    console.log(randomResponse);
 
-    userInput.value = '';
+    appendMessage(randomResponse, false);
 }
+
 
 const clearChatButton = document.getElementById('clear-chat-button');
 
@@ -44,6 +56,7 @@ userInput.addEventListener('keyup', function (event) {
     }
 });
 
+// Pop-up menu buttons and functions
 const menuButton = document.getElementById('menu-button');
 const menuPopup = document.getElementById('menu-popup');
 const resetButton = document.getElementById('reset-button');
@@ -68,6 +81,7 @@ resetButton.addEventListener('click', function () {
     // Implement your reset logic here
     alert('Chat Reseted.');
     resetChat();
+    menuPopup.style.display = 'none';
 });
 
 saveButton.addEventListener('click', function () {
