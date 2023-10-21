@@ -10,6 +10,7 @@ async def getHistory():
 
 @app.get("/ask/") 
 async def ask(message:str ):
+    global i
     resp=Answer(answer=message) # generate questions + answers
     history.update({i:{message:resp.answer}})
     i+=1
