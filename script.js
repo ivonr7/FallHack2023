@@ -44,3 +44,43 @@ userInput.addEventListener('keyup', function (event) {
         processUserInput();
     }
 });
+
+const menuButton = document.getElementById('menu-button');
+const menuPopup = document.getElementById('menu-popup');
+const resetButton = document.getElementById('reset-button');
+const saveButton = document.getElementById('save-button');
+const loadButton = document.getElementById('load-button');
+const exitButton = document.getElementById('exit-button');
+
+menuButton.addEventListener('click', function () {
+    toggleMenu();
+});
+
+function toggleMenu() {
+    if (menuPopup.style.display === 'block') {
+        menuPopup.style.display = 'none';
+    } else {
+        menuPopup.style.display = 'block';
+    }
+}
+
+// Handle menu options
+resetButton.addEventListener('click', function () {
+    // Implement your reset logic here
+    alert('Reset button clicked');
+});
+
+saveButton.addEventListener('click', function () {
+    // Implement your save logic here
+    alert('Save button clicked');
+});
+
+loadButton.addEventListener('click', function () {
+    // Implement your load logic here
+    alert('Load button clicked');
+});
+
+exitButton.addEventListener('click', function () {
+    // Implement your exit logic here
+    alert('Exit button clicked');
+});
