@@ -39,4 +39,4 @@ async def ask(message: str):
 
 @app.get("/")
 async def root():
-    return keyword_responses
+    return {"Welcome":"to Fall Hacks Backend"}
