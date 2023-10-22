@@ -50,6 +50,7 @@ async function processUserInput() {
 }
 
 
+
 const clearChatButton = document.getElementById('clear-chat-button');
 
 clearChatButton.addEventListener('click', function () {
