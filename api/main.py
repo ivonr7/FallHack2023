@@ -28,17 +28,45 @@ i = 0
 async def getHistory():
     return history
 
-@app.get("/ask/") 
-async def ask(message:str ):
+app.get("/ask/")
+async def ask(message: str):
     global i
-    resp=Answer(answer=message) # generate questions + answers
-    history.update({i:{message:resp.answer}})
-    headers={"Access-Control-Allow-Origin:": "*","Access-Control-Allow-Methods": "POST, GET, PUT",
-             "Access-Control-Allow-Headers": "Content-Type"}
-    i+=1
-    return JSONResponse(content=jsonable_encoder(resp),headers=jsonable_encoder(headers))
+    # Send the user's message to GPT-3 for generating a response
+    response = openai.Completion.create(
+        engine="text-davinci-002",  # Choose the appropriate engine
+        prompt=message,
+        max_tokens=50,  # Adjust as needed
+    )
+
+    generated_answer = response.choices[0].text
+
+    history.update({i: {message: generated_answer}})
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, GET, PUT",
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+    i += 1
+    return JSONResponse(
+        content=jsonable_encoder({"answer": generated_answer}),
+        headers=jsonable_encoder(headers),
+    )
+
+
+keyword_responses = {}
+
+# Read data from an external text file
+with open("keywords.txt", "r") as file:
+    for line in file:
+        parts = line.strip().split(",")
+        if len(parts) == 2:
+            keyword, message = parts
+            keyword_responses[keyword] = message
+        else:
+            # Handle lines with incorrect format
+            print(f"Ignored line: {line}")
 
 
 @app.get("/")
 async def root():
-    return {"Welcome":"To Fall Hacks Backend"}
+    return keyword_responses
