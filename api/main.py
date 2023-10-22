@@ -27,8 +27,8 @@ i = 0
 async def getHistory():
     return history
 
-@app.get("/ask/") 
-async def ask(message:str ):
+app.get("/ask/")
+async def ask(message: str):
     global i
     resp=Answer(answer=message) # generate questions + answers
     history.update({i:{message:resp.answer}})
@@ -39,4 +39,4 @@ async def ask(message:str ):
 
 @app.get("/")
 async def root():
-    return {"Welcome":"To Fall Hacks Backend"}
+    return keyword_responses
